@@ -54,7 +54,7 @@ const Home = () => {
         <h1 className="text-3xl font-bold mb-12 text-center">Projects</h1>
           <ProjectsResume />
       </section>
-      <section>
+      <section className="relative bg-[#262633]">
           <Achievements />
       </section>
       <section className="p-10 relative bg-[#262633]">
