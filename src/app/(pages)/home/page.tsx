@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-import ExperienceTimeline from "@/app/components/_genricComponent/sliderDisplay";
+import ExperienceTimeline from "@/app/components/_genricComponent/expDisplay";
 import { EXPERIENCE } from "@/app/constants/constants";
 import Technologies from "./technologies";
 import ProjectsResume from "./projects";
@@ -19,7 +19,7 @@ const Home = () => {
 
       <ImageCube />
       <section
-        className="container mx-10 relative z-10 flex sm:flex-row flex-col gap-16 items-center"
+        className="container mx-auto relative z-10 flex sm:flex-row flex-col gap-16 items-center"
       >
         <div className="bg-dark">
           <span className="text-[4rem] leading-tight font-bold font-poppins">

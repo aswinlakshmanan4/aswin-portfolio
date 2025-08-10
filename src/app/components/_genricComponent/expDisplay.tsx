@@ -101,7 +101,7 @@ export default function ExperienceTimeline({
   }, []);
 
   return (
-    <section className="container mx-10 relative" id="experience-timeline">
+    <section className="container mx-auto relative" id="experience-timeline">
       <h2 className="text-3xl font-bold mb-12 text-center">{title}</h2>
       <section ref={containerRef} className="relative mx-10 py-10">
         {/* Timeline Track */}
