@@ -4,7 +4,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 interface ExperienceTimelineProps {
-    content: any[];
+    content: { company: string; role: string; duration: string; description: string }[];
     title: string;
 }
 

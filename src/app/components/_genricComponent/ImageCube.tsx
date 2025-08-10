@@ -143,15 +143,15 @@ export default function AttractiveThreeCube(): JSX.Element {
     animate();
 
     // Resize
-    const onResize = () => {
-      if (!mount) return;
-      const w = mount.clientWidth;
-      const h = mount.clientHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-      worldTopY = getWorldTopY();
-    };
+    // const onResize = () => {
+    //   if (!mount) return;
+    //   const w = mount.clientWidth;
+    //   const h = mount.clientHeight;
+    //   camera.aspect = w / h;
+    //   camera.updateProjectionMatrix();
+    //   renderer.setSize(w, h);
+    //   worldTopY = getWorldTopY();
+    // };
     // window.addEventListener("resize", onResize);z
 
     // Cleanup

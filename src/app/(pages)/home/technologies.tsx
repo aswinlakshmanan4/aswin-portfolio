@@ -32,7 +32,7 @@ export default function Technologies() {
   const techData = useMemo(() => {
     return techs.map((name) => {
       const key = "si" + name;
-      const iconData = (simpleIcons as any)[key];
+      const iconData = (simpleIcons as Record<string, any>)[key];
       const color =
         fallbackColors[name] ||
         (iconData?.hex ? `#${iconData.hex}` : "#ffffff");
@@ -43,7 +43,7 @@ export default function Technologies() {
         color,
       };
     });
-  }, []);
+  }, [fallbackColors, techs]);
 
   const Row = () => (
     <>
