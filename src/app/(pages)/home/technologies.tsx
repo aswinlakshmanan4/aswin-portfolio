@@ -2,37 +2,38 @@
 import { Icon } from "@iconify/react";
 import * as simpleIcons from "simple-icons";
 import { useMemo } from "react";
+import type { SimpleIcon } from "simple-icons";
 
 export default function Technologies() {
-  const techs = [
-    "Frontend",
-    "React",
-    "Nextdotjs",
-    "Angular",
-    "Tailwindcss",
-    "Typescript",
-    "Backend",
-    "Nodedotjs",
-    "Nestjs",
-    "Wordpress",
-    "Laravel",
-    "Express",
-    "Database",
-    "Mongodb",
-    "Postgresql",
-    "Docker",
-  ];
-
-  const fallbackColors: Record<string, string> = {
-    Nextdotjs: "#000000",
-    Express: "#000000",
-    Angular: "#dd0031",
-  };
-
   const techData = useMemo(() => {
+    const techs = [
+      "Frontend",
+      "React",
+      "Nextdotjs",
+      "Angular",
+      "Tailwindcss",
+      "Typescript",
+      "Backend",
+      "Nodedotjs",
+      "Nestjs",
+      "Wordpress",
+      "Laravel",
+      "Express",
+      "Database",
+      "Mongodb",
+      "Postgresql",
+      "Docker",
+    ];
+
+    const fallbackColors: Record<string, string> = {
+      Nextdotjs: "#000000",
+      Express: "#000000",
+      Angular: "#dd0031",
+    };
+
     return techs.map((name) => {
       const key = "si" + name;
-      const iconData = (simpleIcons as Record<string, any>)[key];
+      const iconData = (simpleIcons as unknown as Record<string, SimpleIcon>)[key];
       const color =
         fallbackColors[name] ||
         (iconData?.hex ? `#${iconData.hex}` : "#ffffff");
@@ -43,7 +44,7 @@ export default function Technologies() {
         color,
       };
     });
-  }, [fallbackColors, techs]);
+  }, []); // No changing deps → stable memo
 
   const Row = () => (
     <>
@@ -70,7 +71,7 @@ export default function Technologies() {
     <div className="overflow-hidden w-full py-6 group">
       <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
         <Row />
-        <Row /> {/* exact duplicate for loop */}
+        <Row /> {/* exact duplicate for smooth loop */}
       </div>
     </div>
   );
