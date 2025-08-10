@@ -20,7 +20,6 @@ const Home = () => {
       <ImageCube />
       <section
         className="container mx-auto relative z-10 flex sm:flex-row flex-col gap-16 items-center"
-        style={{ pointerEvents: "none" }}
       >
         <div className="bg-dark">
           <span className="text-[4rem] leading-tight font-bold font-poppins">
@@ -44,7 +43,7 @@ const Home = () => {
           </section>
         </div>
       </section>
-      <section className="mx-auto relative pointer-events-none mb-12 bg-[#262633] p-10">
+      <section className="mx-auto relative mb-12 bg-[#262633] p-10">
         <ExperienceTimeline content={EXPERIENCE} title="Experience" />
       </section>
       <section className="relative">

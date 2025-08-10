@@ -77,10 +77,10 @@ export default function ProjectsResume(): JSX.Element {
           {projects.map((p) => (
             <article
               key={p.title}
-              className=" rounded-2xl p-6 shadow-sm border border-yellow-100 transform hover:-translate-y-2 hover:shadow-around hover:shadow-yellow-400 hover:scale-[1.02] transition-transform transition-shadow duration-300 ease-out"
+              className=" rounded-2xl p-3 sm:p-6 shadow-sm border border-yellow-100 transform hover:-translate-y-2 hover:shadow-around hover:shadow-yellow-400 hover:scale-[1.02] transition-transform transition-shadow duration-300 ease-out"
             >
               <div className="md:flex md:justify-between md:items-start h-full">
-                <div className="flex-1 w-3/4">
+                <div className="flex-1 sm:w-3/4 text-justify">
                   <div>
                     <h3 className="text-xl font-semibold">{p.title}</h3>
 
@@ -109,7 +109,7 @@ export default function ProjectsResume(): JSX.Element {
                     ))}
                   </div>
                 </div>
-                <div className="mt-4 md:mt-0 md:ml-6 flex-shrink-0 h-full w-1/4">
+                <div className="mt-4 md:mt-0 md:ml-6 flex-shrink-0 sm:h-full sm:w-1/4">
                   <div className="bg-yellow-400 rounded-lg p-3 text-sm text-gray-700 h-full">
                     <div className="font-medium mb-2">Highlights</div>
                     <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
