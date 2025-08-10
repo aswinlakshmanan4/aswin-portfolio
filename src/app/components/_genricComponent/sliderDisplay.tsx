@@ -4,8 +4,8 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 interface ExperienceTimelineProps {
-    content: { company: string; role: string; duration: string; description: string }[];
-    title: string;
+  content: { company: string; role: string; duration: string; description: string }[];
+  title: string;
 }
 
 export default function ExperienceTimeline({ content, title }: ExperienceTimelineProps) {
@@ -22,7 +22,13 @@ export default function ExperienceTimeline({ content, title }: ExperienceTimelin
   });
   const lineHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
-  // when this id is visible, we need to animate the company div and role div
+  // Precompute diamond fill transforms for each item (hook-safe)
+  const diamondFills = content.map((_, index) => {
+    const pointProgress = (index + 1) / content.length;
+    return useTransform(smoothProgress, [0, pointProgress], ["#1f2937", "#a855f7"]);
+  });
+
+  // Refs for fade-up animation
   const companyRef = useRef<HTMLDivElement>(null);
   const roleRef = useRef<HTMLDivElement>(null);
 
@@ -30,9 +36,8 @@ export default function ExperienceTimeline({ content, title }: ExperienceTimelin
     if (!containerRef.current) return;
 
     const handleScroll = () => {
-      if(!containerRef.current) return;
+      if (!containerRef.current) return;
       const { top } = containerRef.current.getBoundingClientRect();
-      console.log("Adding scroll event listener", top, window.innerHeight, companyRef.current, roleRef.current);
       if (top < window.innerHeight && companyRef.current && roleRef.current) {
         companyRef.current.classList.add("animate-fade-up");
         roleRef.current.classList.add("animate-fade-up");
@@ -58,39 +63,32 @@ export default function ExperienceTimeline({ content, title }: ExperienceTimelin
 
         {/* Timeline Items */}
         <div className="relative flex flex-col gap-24">
-          {content.map((exp, index) => {
-            const pointProgress = (index + 1) / content.length;
-            const diamondFill = useTransform(
-              smoothProgress,
-              [0, pointProgress],
-              ["#1f2937", "#a855f7"]
-            );
-
-            return (
-              <div key={index} className="relative flex">
-                
-                {/* Left side */}
-                <div className="w-1/2 pl-8 flex justify-start items-center text-purple-500 font-semibold" ref={companyRef}>
-                  {exp.company}
-                </div>
-                {/* Right side */}
-
-                <div className="w-1/2 pl-8 text-left" ref={roleRef}>
-                  <h3 className="text-xl font-bold">{exp.role}</h3>
-                  <p className="text-sm text-gray-400">{exp.duration}</p>
-                  <p className="text-gray-300 mt-2">{exp.description}</p>
-                </div>
-
-                {/* Diamond marker */}
-                <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
-                  <motion.div
-                    className="w-5 h-5 rotate-45 border-2 border-white"
-                    style={{ backgroundColor: diamondFill }}
-                  />
-                </div>
+          {content.map((exp, index) => (
+            <div key={index} className="relative flex">
+              {/* Left side */}
+              <div
+                className="w-1/2 pl-8 flex justify-start items-center text-purple-500 font-semibold"
+                ref={companyRef}
+              >
+                {exp.company}
               </div>
-            );
-          })}
+
+              {/* Right side */}
+              <div className="w-1/2 pl-8 text-left" ref={roleRef}>
+                <h3 className="text-xl font-bold">{exp.role}</h3>
+                <p className="text-sm text-gray-400">{exp.duration}</p>
+                <p className="text-gray-300 mt-2">{exp.description}</p>
+              </div>
+
+              {/* Diamond marker */}
+              <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+                <motion.div
+                  className="w-5 h-5 rotate-45 border-2 border-white"
+                  style={{ backgroundColor: diamondFills[index] }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </section>

@@ -31,7 +31,7 @@ export default function AttractiveThreeCube(): JSX.Element {
 
     // Lights
     scene.add(new THREE.AmbientLight(0xffffff, 0.45));
-    const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+    const dir: THREE.DirectionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     dir.position.set(5, 10, 7.5);
     dir.castShadow = true;
     scene.add(dir);
@@ -104,7 +104,7 @@ export default function AttractiveThreeCube(): JSX.Element {
         2.5 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
       return frustumHeight / 2;
     };
-    let worldTopY = getWorldTopY();
+    const worldTopY = getWorldTopY();
 
     // Animation loop
     let frameId: number;
