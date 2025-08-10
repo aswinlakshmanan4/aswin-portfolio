@@ -19,7 +19,7 @@ const Home = () => {
 
       <ImageCube />
       <section
-        className="container mx-auto relative z-10 flex sm:flex-row flex-col gap-16 items-center"
+        className="container mx-10 relative z-10 flex sm:flex-row flex-col gap-16 items-center"
       >
         <div className="bg-dark">
           <span className="text-[4rem] leading-tight font-bold font-poppins">
@@ -36,28 +36,28 @@ const Home = () => {
               <h1 className="text-3xl sm:text-4xl font-bold mb-4">
                 Product Designer and Full-Stack Developer
               </h1>
-              <p className="text-slate-300 text-lg leading-relaxed max-w-3xl">
+              <p className="text-slate-300 text-lg leading-relaxed max-w-3xl text-justify">
                 I am a full-stack web developer with over five years of experience designing, developing, and maintaining high-quality web applications across a wide range of technologies, including MEAN, MERN, Python, PHP, and WordPress. I am highly proficient in JavaScript and have a solid understanding of software architecture, development principles, and best practices. My expertise extends to building and consuming RESTful web services, integrating third-party APIs, and delivering secure, efficient solutions.
               </p>
             </div>
           </section>
         </div>
       </section>
-      <section className="mx-auto relative mb-12 bg-[#262633] p-10">
+      <section className="mx-auto relative mb-12 bg-[#262633] sm:p-10 p-4">
         <ExperienceTimeline content={EXPERIENCE} title="Experience" />
       </section>
       <section className="relative">
         <h1 className="text-3xl font-bold mb-12 text-center">Technologies</h1>
         <Technologies />
       </section>
-      <section className="p-10 relative bg-[#262633]">
+      <section className="sm:p-10 relative bg-[#262633]">
         <h1 className="text-3xl font-bold mb-12 text-center">Projects</h1>
           <ProjectsResume />
       </section>
       <section className="relative bg-[#262633]">
           <Achievements />
       </section>
-      <section className="p-10 relative bg-[#262633]">
+      <section className="sm:p-10 relative bg-[#262633]">
         <h1 className="text-3xl font-bold mb-12 text-center">Resume</h1>
         <div className="flex justify-center">
           <a

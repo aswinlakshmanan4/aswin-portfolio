@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="container mx-auto">
+    <header className="container mx-10">
       <nav className="mt-8 mb-8 p-4">
         <div className="flex justify-between items-center">
           <span>MAL</span>

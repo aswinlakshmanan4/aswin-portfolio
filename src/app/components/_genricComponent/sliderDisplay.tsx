@@ -35,7 +35,7 @@ function TimelineItem({
       }`}
     >
       {/* Left side */}
-      <div className="w-1/2 pl-8 flex justify-start items-center text-purple-500 font-semibold">
+      <div className="w-1/2 sm:pl-8 flex justify-start items-center text-purple-500 font-semibold break-all">
         {exp.company}
       </div>
 
@@ -101,9 +101,9 @@ export default function ExperienceTimeline({
   }, []);
 
   return (
-    <section className="container mx-auto relative" id="experience-timeline">
+    <section className="container mx-10 relative" id="experience-timeline">
       <h2 className="text-3xl font-bold mb-12 text-center">{title}</h2>
-      <section ref={containerRef} className="relative mx-auto py-10">
+      <section ref={containerRef} className="relative mx-10 py-10">
         {/* Timeline Track */}
         <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[4px] bg-gray-700">
           {/* Animated Line */}
