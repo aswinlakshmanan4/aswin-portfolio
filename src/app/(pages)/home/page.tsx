@@ -37,7 +37,7 @@ const Home = () => {
                 Product Designer and Full-Stack Developer
               </h1>
               <p className="text-slate-300 text-lg leading-relaxed max-w-3xl text-justify">
-                I am a full-stack web developer with over five years of experience designing, developing, and maintaining high-quality web applications across a wide range of technologies, including MEAN, MERN, Python, PHP, and WordPress. I am highly proficient in JavaScript and have a solid understanding of software architecture, development principles, and best practices. My expertise extends to building and consuming RESTful web services, integrating third-party APIs, and delivering secure, efficient solutions.
+                I am a full-stack web developer with over 6.6 years of experience designing, developing, and maintaining high-quality web applications across a wide range of technologies, including MEAN, MERN, Python, PHP, and WordPress. I am highly proficient in JavaScript and have a solid understanding of software architecture, development principles, and best practices. My expertise extends to building and consuming RESTful web services, integrating third-party APIs, and delivering secure, efficient solutions.
               </p>
             </div>
           </section>
