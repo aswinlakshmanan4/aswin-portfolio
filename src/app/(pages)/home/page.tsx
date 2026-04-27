@@ -36,9 +36,34 @@ const Home = () => {
               <h1 className="text-3xl sm:text-4xl font-bold mb-4">
                 Product Designer and Full-Stack Developer
               </h1>
-              <p className="text-slate-300 text-lg leading-relaxed max-w-3xl text-justify">
-                I am a full-stack web developer with over 6.6 years of experience designing, developing, and maintaining high-quality web applications across a wide range of technologies, including MEAN, MERN, Python, PHP, and WordPress. I am highly proficient in JavaScript and have a solid understanding of software architecture, development principles, and best practices. My expertise extends to building and consuming RESTful web services, integrating third-party APIs, and delivering secure, efficient solutions.
-              </p>
+<div className="max-w-4xl mx-auto mt-10 p-8 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-lg hover:border-indigo-500 transition-all duration-300">
+
+  <p className="text-lg text-gray-300 leading-relaxed">
+    Senior Software Engineer with 
+    <span className="font-semibold text-white">6.6 years of experience</span> in designing, developing, and deploying scalable, high-performance web applications across technologies including 
+    <span className="text-indigo-400">MEAN, MERN, Python, PHP, and WordPress</span>.
+  </p>
+
+  <p className="mt-4 text-gray-400 leading-relaxed">
+    Highly proficient in 
+    <span className="text-white font-medium">JavaScript</span> with a strong foundation in 
+    <span className="text-indigo-400">software architecture, system design, and best practices</span>. 
+    Experienced in building and consuming RESTful APIs and integrating third-party services.
+  </p>
+
+  <p className="mt-4 text-gray-400 leading-relaxed">
+    Hands-on expertise in 
+    <span className="text-indigo-400 font-medium">DevOps</span>, including 
+    <span className="text-white">Azure DevOps CI/CD pipelines</span> and 
+    <span className="text-white">production deployments using Termius (SSH)</span>.
+  </p>
+
+  <p className="mt-4 text-gray-400 leading-relaxed">
+    Proven ability to 
+    <span className="text-white font-medium">lead teams of 6 developers</span>, manage multiple projects, and ensure reliable production releases with minimal downtime.
+  </p>
+
+</div>
             </div>
           </section>
         </div>
