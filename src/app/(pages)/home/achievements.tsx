@@ -1,53 +1,68 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { Trophy, Award } from "lucide-react";
+
+interface Achievement {
+  number: string;
+  title: string;
+  description: string;
+  accent: "orange" | "sun";
+}
+
+const ACHIEVEMENTS: Achievement[] = [
+  {
+    number: "★",
+    title: "Excellence in Action",
+    description: "Recognized for outstanding contributions and impact.",
+    accent: "orange",
+  },
+  {
+    number: "3×",
+    title: "Best Performer",
+    description: "Awarded for consistent top performance and dedication.",
+    accent: "sun",
+  },
+];
+
+const ACCENT_BG: Record<Achievement["accent"], string> = {
+  orange: "bg-orange",
+  sun: "bg-sun",
+};
 
 export default function Achievements() {
-  const achievements = [
-    {
-      icon: <Award className="w-8 h-8 text-yellow-400" />,
-      title: "Excellence in Action Award",
-      description: "Recognized for outstanding contributions and impact.",
-    },
-    {
-      icon: <Trophy className="w-8 h-8 text-yellow-400" />,
-      title: "Best Performer (3 Times)",
-      description: "Awarded for consistent top performance and dedication.",
-    },
-  ];
-
   return (
-    <section className="bg-gray-900 text-white py-16">
-      <div className="container mx-auto px-6">
-        <motion.h2
-          className="text-3xl font-bold mb-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          Achievements
-        </motion.h2>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-10">
+      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight mb-10">
+        Wins<span className="text-orange">.</span>
+      </h2>
 
-        <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
-          {achievements.map((ach, idx) => (
-            <motion.div
-              key={idx}
-              className="flex items-start space-x-4 p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-yellow-400/20 transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
+      <div className="grid sm:grid-cols-2 gap-6 lg:gap-10">
+        {ACHIEVEMENTS.map((ach, idx) => (
+          <motion.div
+            key={ach.title}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ delay: idx * 0.15, duration: 0.5 }}
+            whileHover={{ rotate: idx % 2 === 0 ? -1 : 1 }}
+            className="border-3 border-ink bg-cream p-6 lg:p-8 flex gap-5 items-start brut-press"
+          >
+            <div
+              className={`${ACCENT_BG[ach.accent]} border-3 border-ink w-16 h-16 flex items-center justify-center text-2xl font-bold shrink-0`}
             >
-              <div>{ach.icon}</div>
-              <div>
-                <h3 className="text-xl font-semibold">{ach.title}</h3>
-                <p className="text-gray-400 text-sm">{ach.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              {ach.number}
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold uppercase tracking-tight leading-tight">
+                {ach.title}
+              </h3>
+              <p className="mt-2 text-base text-ink-soft leading-relaxed">
+                {ach.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

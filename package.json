@@ -1,7 +1,20 @@
 {
-  "name": "next-portfolio",
+  "name": "aswin-portfolio",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal portfolio of Aswin Lakshmanan — Senior Software Engineer specializing in full-stack web development, system design, and DevOps.",
+  "author": "Aswin Lakshmanan <aswin.lakshmanan@alferix.com>",
+  "license": "MIT",
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "three.js",
+    "full-stack",
+    "software-engineer"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -24,7 +37,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -34,10 +46,5 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
-  },
-  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }

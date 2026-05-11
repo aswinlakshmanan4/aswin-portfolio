@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/_genricComponent/header";
+import Header from "./components/_genericComponent/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,9 +13,40 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://aswin-portfolio.vercel.app";
+
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Showcasing my work and projects",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Aswin Lakshmanan — Senior Software Engineer",
+    template: "%s · Aswin Lakshmanan",
+  },
+  description:
+    "Senior Software Engineer with 6+ years building scalable full-stack web applications across MEAN, MERN, Python, and PHP.",
+  keywords: [
+    "Aswin Lakshmanan",
+    "Senior Software Engineer",
+    "Full-Stack Developer",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Portfolio",
+  ],
+  authors: [{ name: "Aswin Lakshmanan" }],
+  creator: "Aswin Lakshmanan",
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "Aswin Lakshmanan — Senior Software Engineer",
+    description: "Portfolio of Aswin Lakshmanan.",
+    siteName: "Aswin Lakshmanan",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aswin Lakshmanan — Senior Software Engineer",
+    description: "Portfolio of Aswin Lakshmanan.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -26,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto  bg-theme-dark text-white `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-cream text-ink font-sans`}
       >
         <Header />
         {children}

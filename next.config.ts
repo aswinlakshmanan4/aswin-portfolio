@@ -1,13 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
   async redirects() {
     return [
       {
         source: "/",
         destination: "/home",
-        permanent: true, // use false if you want it to be temporary
+        // Temporary (307) until the URL structure is finalized — avoids
+        // permanent browser caching of the redirect target.
+        permanent: false,
       },
     ];
   },

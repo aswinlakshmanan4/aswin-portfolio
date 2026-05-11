@@ -1,129 +1,162 @@
-import React, { JSX } from "react";
+"use client";
 
-export default function ProjectsResume(): JSX.Element {
-  const projects = [
-    {
-      title: "Tire Planet",
-      role: "Senior Developer",
-      team: 6,
-      tech: ["ReactJS", "Azure DevOps"],
-      description:
-        "A B2C web application enabling end-users to track order details and access comprehensive product and brand information. The platform supports multiple user roles and includes dedicated interfaces for retailers and distributors, ensuring seamless coordination and data management across the supply chain.",
-      highlights: [
-        "Led a cross-functional team of 6 to deliver project milestones on time",
-        "Implemented multi-role access with secure authentication",
-        "Integrated retailer and distributor portals for supply chain efficiency",
-      ],
-    },
-    {
-      title: "Instream Dashboard",
-      role: "Software Engineer",
-      team: 1,
-      tech: ["React", "Node", "Express", "PostgreSQL"],
-      description:
-        "A dashboard providing publisher revenue insights with filters for month-wise and date-wise data. Displays structured revenue charts for better analysis, helping businesses track trends and make informed, data-driven decisions.",
-      highlights: [
-        "Designed and developed dynamic data visualization charts",
-        "Optimized queries for fast revenue data retrieval",
-        "Implemented advanced filtering for flexible data analysis",
-      ],
-    },
-    {
-      title: "Kolibri Studio",
-      role: "Software Engineer",
-      team: 1,
-      tech: ["Vue.js", "Python", "MySQL"],
-      description:
-        "An accessible content creation platform for visually impaired users, allowing them to create channels and add interactive content such as quizzes, audio, videos, and embedded YouTube/Vimeo links. Designed to enhance inclusivity and make content creation more accessible.",
-      highlights: [
-        "Enhanced platform accessibility for visually impaired users",
-        "Added support for interactive multimedia content",
-        "Streamlined content creation workflow with user-friendly UI",
-      ],
-    },
-    {
-      title: "Kolibri Desktop Tool",
-      role: "Software Engineer",
-      team: 1,
-      tech: ["Vue.js", "Python", "MySQL"],
-      description:
-        "A desktop-based learning tool for visually impaired users to access educational content, including quizzes, audio, videos, and interactive resources. Enhances digital education accessibility and user engagement.",
-      highlights: [
-        "Built offline-capable desktop learning application",
-        "Optimized UI for screen reader compatibility",
-        "Integrated multimedia educational resources",
-      ],
-    },
-    {
-      title: "Instream Ad Widget",
-      role: "Software Engineer",
-      team: 1,
-      tech: ["AngularJS"],
-      description:
-        "An ad integration solution featuring a customizable slider. Clients can specify which slide their ad should appear on, allowing for strategic placement and improved user engagement.",
-      highlights: [
-        "Developed configurable ad slider component",
-        "Enabled targeted ad placement per client requirements",
-        "Improved ad engagement through strategic display options",
-      ],
-    },
-  ];
+import { motion } from "framer-motion";
+
+interface Project {
+  number: string;
+  title: string;
+  role: string;
+  team: number;
+  tech: string[];
+  description: string;
+  highlights: string[];
+  accent: "orange" | "sun" | "rose";
+}
+
+const PROJECTS: Project[] = [
+  {
+    number: "01",
+    title: "Tire Planet",
+    role: "Senior Developer",
+    team: 6,
+    tech: ["ReactJS", "Azure DevOps"],
+    description:
+      "A B2C platform letting end-users track orders and browse product/brand information, with role-based portals for retailers and distributors.",
+    highlights: [
+      "Led a team of 6 to deliver on time",
+      "Multi-role access with secure auth",
+      "Retailer + distributor portals",
+    ],
+    accent: "orange",
+  },
+  {
+    number: "02",
+    title: "Instream Dashboard",
+    role: "Software Engineer",
+    team: 1,
+    tech: ["React", "Node", "Express", "PostgreSQL"],
+    description:
+      "Publisher revenue insights dashboard with month-wise and date-wise filters, and dynamic charting for trend analysis.",
+    highlights: [
+      "Dynamic data visualization charts",
+      "Optimized revenue queries",
+      "Advanced filtering",
+    ],
+    accent: "sun",
+  },
+  {
+    number: "03",
+    title: "Kolibri Studio",
+    role: "Software Engineer",
+    team: 1,
+    tech: ["Vue.js", "Python", "MySQL"],
+    description:
+      "Accessible content creation platform for visually impaired users — channels, quizzes, audio, embedded video.",
+    highlights: [
+      "Accessibility-first UI",
+      "Interactive multimedia support",
+      "Friendly creation workflow",
+    ],
+    accent: "rose",
+  },
+  {
+    number: "04",
+    title: "Kolibri Desktop Tool",
+    role: "Software Engineer",
+    team: 1,
+    tech: ["Vue.js", "Python", "MySQL"],
+    description:
+      "Offline-capable desktop learning tool for visually impaired users covering quizzes, audio, video and resources.",
+    highlights: [
+      "Offline desktop app",
+      "Screen-reader friendly UI",
+      "Multimedia resources",
+    ],
+    accent: "orange",
+  },
+  {
+    number: "05",
+    title: "Instream Ad Widget",
+    role: "Software Engineer",
+    team: 1,
+    tech: ["AngularJS"],
+    description:
+      "Configurable ad slider letting clients pick exactly which slide their ad appears on for strategic placement.",
+    highlights: [
+      "Configurable ad slider",
+      "Targeted placement per client",
+      "Improved engagement",
+    ],
+    accent: "sun",
+  },
+];
+
+const ACCENT_BG: Record<Project["accent"], string> = {
+  orange: "bg-orange",
+  sun: "bg-sun",
+  rose: "bg-rose",
+};
+
+export default function ProjectsResume() {
   return (
-    <section>
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-semibold mb-6">Professional Experience</h2>
+    <div className="grid gap-6 sm:gap-8 lg:gap-10">
+      {PROJECTS.map((p, idx) => (
+        <motion.article
+          key={p.title}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ rotate: idx % 2 === 0 ? -0.4 : 0.4 }}
+          className="bg-cream border-3 border-ink p-4 sm:p-6 lg:p-8 grid lg:grid-cols-[1fr_280px] gap-5 lg:gap-6 brut-press"
+        >
+          <div className="min-w-0">
+            <div className="flex items-baseline gap-3 sm:gap-4 mb-3 sm:mb-4 flex-wrap">
+              <span className="font-mono text-xs tracking-widest text-ink/60">
+                {p.number}
+              </span>
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight leading-none break-words">
+                {p.title}
+              </h3>
+            </div>
 
-        <div className="grid gap-6">
-          {projects.map((p) => (
-            <article
-              key={p.title}
-              className=" rounded-2xl p-3 sm:p-6 shadow-sm border border-yellow-100 transform hover:-translate-y-2 hover:shadow-around hover:shadow-yellow-400 hover:scale-[1.02] transition-transform transition-shadow duration-300 ease-out"
-            >
-              <div className="md:flex md:justify-between md:items-start h-full">
-                <div className="flex-1 sm:w-3/4 text-justify">
-                  <div>
-                    <h3 className="text-xl font-semibold">{p.title}</h3>
+            <p className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-ink/70 mb-3 sm:mb-4 break-words">
+              {p.role} · Team of {p.team} · {p.tech.join(", ")}
+            </p>
 
-                    <div className="mt-2 text-sm ">
-                      <span className="font-medium">Role:</span> {p.role}{" "}
-                      &nbsp;•&nbsp;
-                      <span className="font-medium">Team Size:</span> {p.team}{" "}
-                      &nbsp;•&nbsp;
-                      <span className="font-medium">Tech:</span>{" "}
-                      {p.tech.join(", ")}
-                    </div>
+            <p className="text-sm sm:text-base leading-relaxed text-ink-soft max-w-2xl">
+              {p.description}
+            </p>
 
-                    <p className="mt-4 leading-relaxed">
-                      {p.description}
-                    </p>
-                  </div>
+            <div className="mt-4 sm:mt-5 flex flex-wrap gap-2">
+              {p.tech.map((t) => (
+                <span
+                  key={t}
+                  className="text-[11px] sm:text-xs font-bold uppercase tracking-wide border-3 border-ink px-2 sm:px-3 py-1 bg-cream-deep"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {p.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="text-xs font-medium bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full border border-indigo-100"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-4 md:mt-0 md:ml-6 flex-shrink-0 sm:h-full sm:w-1/4">
-                  <div className="bg-yellow-400 rounded-lg p-3 text-sm text-gray-700 h-full">
-                    <div className="font-medium mb-2">Highlights</div>
-                    <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                      {p.highlights.map((h, i) => (
-                        <li key={i}>{h}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+          <div
+            className={`${ACCENT_BG[p.accent]} border-3 border-ink p-4 sm:p-5 flex flex-col gap-2`}
+          >
+            <p className="font-mono text-[10px] tracking-widest uppercase text-ink/70 mb-1">
+              Highlights
+            </p>
+            <ul className="space-y-2 text-sm leading-snug text-ink font-medium">
+              {p.highlights.map((h) => (
+                <li key={h} className="flex gap-2">
+                  <span className="font-bold">→</span>
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.article>
+      ))}
+    </div>
   );
 }
