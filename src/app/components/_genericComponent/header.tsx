@@ -44,7 +44,7 @@ const Header = () => {
           })}
           <li>
             <a
-              href="mailto:aswin.lakshmanan@alferix.com"
+              href="mailto:maswinlakshmanan4@gmail.com"
               className="hidden sm:inline-block bg-ink text-cream border-3 border-ink px-4 py-2 font-bold uppercase tracking-wide brut-press"
             >
               Hire me

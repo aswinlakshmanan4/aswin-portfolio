@@ -129,7 +129,7 @@ export default function About() {
           </h2>
           <div className="flex flex-col gap-3">
             <a
-              href="mailto:aswin.lakshmanan@alferix.com"
+              href="mailto:maswinlakshmanan4@gmail.com"
               className="bg-orange text-ink border-3 border-orange px-5 py-4 font-bold uppercase tracking-wide brut-press inline-block"
             >
               Email me →

@@ -181,10 +181,10 @@ const Home = () => {
           </h2>
           <div className="flex flex-col gap-3 lg:items-end">
             <a
-              href="mailto:aswin.lakshmanan@alferix.com"
+              href="mailto:maswinlakshmanan4@gmail.com"
               className="bg-orange text-ink border-3 border-orange px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wide brut-press inline-block break-all"
             >
-              aswin.lakshmanan@alferix.com →
+              maswinlakshmanan4@gmail.com →
             </a>
             <a
               href="/resume.pdf"
