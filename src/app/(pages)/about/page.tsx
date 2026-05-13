@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+const easeOut = [0.22, 1, 0.36, 1] as const;
+
 const STRENGTHS = [
   {
     title: "Full-stack delivery",
@@ -27,132 +29,157 @@ const STRENGTHS = [
 ] as const;
 
 const ACCENT_DOT: Record<(typeof STRENGTHS)[number]["accent"], string> = {
-  purple: "bg-aurora-purple shadow-[0_0_14px_rgba(167,139,250,0.55)]",
-  pink: "bg-aurora-pink shadow-[0_0_14px_rgba(244,114,182,0.55)]",
-  teal: "bg-aurora-mint shadow-[0_0_14px_rgba(63,216,194,0.55)]",
-  blue: "bg-aurora-sky shadow-[0_0_14px_rgba(63,157,255,0.55)]",
+  purple: "bg-aurora-purple shadow-[0_0_14px_rgba(167,139,250,0.6)]",
+  pink: "bg-aurora-pink shadow-[0_0_14px_rgba(244,114,182,0.6)]",
+  teal: "bg-aurora-mint shadow-[0_0_14px_rgba(63,216,194,0.6)]",
+  blue: "bg-aurora-sky shadow-[0_0_14px_rgba(63,157,255,0.6)]",
 };
 
 export default function About() {
   return (
-    <main className="relative">
-      {/* Intro */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-24">
-        <motion.p
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.12em] text-white/45 font-medium mb-5"
-        >
-          — About
-        </motion.p>
+    <main className="relative z-10">
+      {/* INTRO */}
+      <section className="relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-10 pt-16 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: easeOut }}
+            className="text-xs uppercase tracking-[0.14em] text-white/45 font-medium mb-6"
+          >
+            — About
+          </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight leading-[1.0] text-white max-w-4xl"
-        >
-          Hi, I&apos;m{" "}
-          <span className="font-serif italic font-normal gradient-text">
-            Aswin
-          </span>
-          .
-        </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: easeOut, delay: 0.1 }}
+            className="font-medium tracking-[-0.04em] leading-[1.02] text-white mx-auto max-w-4xl"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)" }}
+          >
+            Hi, I&apos;m{" "}
+            <span className="font-serif italic font-normal gradient-text">
+              Aswin
+            </span>
+            .
+          </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="grid lg:grid-cols-2 gap-6 mt-10 sm:mt-12 lg:mt-14"
-        >
-          <p className="text-lg leading-relaxed text-white/65">
-            I&apos;m a Senior Software Engineer with 6+ years of experience
-            building and shipping web applications across MEAN, MERN, Python,
-            PHP and WordPress. Strong focus on clean architecture, performance
-            and developer experience.
-          </p>
-          <p className="text-lg leading-relaxed text-white/65">
-            I care about the craft — readable code, thoughtful UX, robust CI/CD
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: easeOut, delay: 0.35 }}
+            className="mt-7 sm:mt-9 text-base sm:text-lg lg:text-xl leading-[1.55] text-white/70 max-w-2xl mx-auto"
+          >
+            A Senior Software Engineer with 6+ years building and shipping web
+            applications across MEAN, MERN, Python, PHP and WordPress. Strong
+            focus on clean architecture, performance and developer experience.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: easeOut, delay: 0.5 }}
+            className="mt-5 text-base sm:text-lg leading-[1.55] text-white/55 max-w-2xl mx-auto"
+          >
+            I care about the craft — readable code, thoughtful UX, robust CI/CD,
             and teams that ship calmly. Currently at{" "}
-            <span className="text-white font-medium">Alferix</span> working on AI
-            conversational systems.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* Strengths */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-20">
-        <div className="mb-10 sm:mb-12">
-          <p className="text-xs uppercase tracking-[0.12em] text-white/45 font-medium mb-3">
-            — Strengths
-          </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white">
-            What I{" "}
-            <span className="font-serif italic font-normal text-aurora-pink">
-              focus on
-            </span>
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
-          {STRENGTHS.map((s, idx) => (
-            <motion.article
-              key={s.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ delay: idx * 0.08, duration: 0.55 }}
-              className="glass glass-hover transition-all duration-300 hover:-translate-y-1 p-6 lg:p-8"
-            >
-              <div className="flex items-center gap-2.5 mb-3">
-                <span className={`w-2 h-2 rounded-full ${ACCENT_DOT[s.accent]}`} />
-                <h3 className="text-xl font-medium tracking-tight text-white">
-                  {s.title}
-                </h3>
-              </div>
-              <p className="text-[15px] leading-relaxed text-white/65">
-                {s.body}
-              </p>
-            </motion.article>
-          ))}
+            <span className="text-white font-medium">Alferix</span> working on
+            AI conversational systems.
+          </motion.p>
         </div>
       </section>
 
-      {/* Education */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-16 lg:py-20">
-        <div className="mb-10 sm:mb-12">
-          <p className="text-xs uppercase tracking-[0.12em] text-white/45 font-medium mb-3">
-            — Education
-          </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white">
-            Where I{" "}
-            <span className="font-serif italic font-normal text-aurora-mint">
-              learned the basics
-            </span>
-          </h2>
-        </div>
-        <div className="glass p-6 lg:p-8">
-          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
-            <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-white">
-              B.E. Computer Science
-            </h3>
-            <span className="text-xs uppercase tracking-[0.1em] text-white/45">
-              2015 — 2019
-            </span>
-          </div>
-          <p className="mt-3 text-base text-white/65 leading-relaxed">
-            Foundation in algorithms, distributed systems and software
-            engineering principles.
-          </p>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section className="relative py-16 sm:py-20 lg:py-24">
+      {/* STRENGTHS */}
+      <section className="relative py-14 sm:py-18 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="glass p-10 sm:p-12 lg:p-16 text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.05] text-white mb-5">
+          <div className="mb-10 sm:mb-12 text-center">
+            <p className="text-xs uppercase tracking-[0.14em] text-white/45 font-medium mb-3">
+              — Strengths
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white">
+              What I{" "}
+              <span className="font-serif italic font-normal text-aurora-pink">
+                focus on
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5 sm:gap-6 max-w-5xl mx-auto">
+            {STRENGTHS.map((s, idx) => (
+              <motion.article
+                key={s.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ delay: idx * 0.08, duration: 0.55, ease: easeOut }}
+                className="glass glass-hover transition-all duration-300 hover:-translate-y-1 p-7 sm:p-8"
+              >
+                <div className="flex items-center gap-2.5 mb-3">
+                  <span className={`w-2 h-2 rounded-full ${ACCENT_DOT[s.accent]}`} />
+                  <h3 className="text-xl font-medium tracking-tight text-white">
+                    {s.title}
+                  </h3>
+                </div>
+                <p className="text-[15px] leading-relaxed text-white/65">
+                  {s.body}
+                </p>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EDUCATION */}
+      <section className="relative py-12 sm:py-16 lg:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-10 max-w-3xl">
+          <div className="mb-10 sm:mb-12 text-center">
+            <p className="text-xs uppercase tracking-[0.14em] text-white/45 font-medium mb-3">
+              — Education
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white">
+              Where I{" "}
+              <span className="font-serif italic font-normal text-aurora-mint">
+                learned the basics
+              </span>
+            </h2>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.6, ease: easeOut }}
+            className="glass p-7 sm:p-8 lg:p-10"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+              <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-white">
+                B.E. Computer Science
+              </h3>
+              <span className="text-xs uppercase tracking-[0.1em] text-white/45">
+                2015 — 2019
+              </span>
+            </div>
+            <p className="mt-3 text-base text-white/65 leading-relaxed">
+              Foundation in algorithms, distributed systems and software
+              engineering principles.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="relative py-16 sm:py-20 lg:py-28">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.7, ease: easeOut }}
+            className="glass p-10 sm:p-14 lg:p-20 text-center max-w-3xl mx-auto"
+          >
+            <h2
+              className="font-medium tracking-tight leading-[1.05] text-white mb-5"
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
+            >
               Want to{" "}
               <span className="font-serif italic font-normal gradient-text-pink">
                 work together
@@ -177,7 +204,7 @@ export default function About() {
                 See the work
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>

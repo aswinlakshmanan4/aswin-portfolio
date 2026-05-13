@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif, Geist_Mono } from "next/font/google";
-import dynamic from "next/dynamic";
 import "./globals.css";
 import Header from "./components/_genericComponent/header";
+import AuroraBackgroundClient from "./components/_genericComponent/AuroraBackgroundClient";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,11 +22,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-const AuroraBackground = dynamic(
-  () => import("./components/_genericComponent/AuroraBackground"),
-  { ssr: false }
-);
 
 const siteUrl = "https://aswin-portfolio.vercel.app";
 
@@ -74,7 +69,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${instrumentSerif.variable} ${geistMono.variable} antialiased bg-bg text-white font-sans`}
       >
-        <AuroraBackground />
+        <AuroraBackgroundClient />
         <Header />
         {children}
       </body>

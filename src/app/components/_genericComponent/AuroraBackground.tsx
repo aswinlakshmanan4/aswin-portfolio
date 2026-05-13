@@ -84,8 +84,8 @@ function Scene() {
       <Shape
         geometry={knotGeo}
         color="#A78BFA"
-        opacity={0.22}
-        position={[-3.6, 1.2, -1]}
+        opacity={0.38}
+        position={[-3.0, 1.3, -1]}
         rotationSpeed={[0.15, 0.2, 0]}
         bobSpeed={0.5}
         bobAmount={0.25}
@@ -93,8 +93,8 @@ function Scene() {
       <Shape
         geometry={icoGeo}
         color="#F472B6"
-        opacity={0.26}
-        position={[3.6, -0.6, 0]}
+        opacity={0.42}
+        position={[3.0, -0.8, 0]}
         rotationSpeed={[-0.18, 0, 0.12]}
         bobSpeed={0.4}
         bobAmount={0.3}
@@ -102,8 +102,8 @@ function Scene() {
       <Shape
         geometry={octaGeo}
         color="#5EEAD4"
-        opacity={0.26}
-        position={[0.2, 2.6, -1.5]}
+        opacity={0.42}
+        position={[0.2, 2.4, -1.5]}
         rotationSpeed={[0.1, 0.25, 0]}
         bobSpeed={0.3}
         bobAmount={0.35}
@@ -128,13 +128,13 @@ export default function AuroraBackground() {
   return (
     <div
       aria-hidden
-      className="fixed inset-0 -z-10 overflow-hidden pointer-events-none"
+      className="fixed inset-0 z-0 overflow-hidden pointer-events-none"
     >
       {/* Drift blobs (CSS-only aurora layer) */}
-      <div className="absolute -top-[150px] -left-[100px] w-[600px] h-[600px] rounded-full blur-[90px] opacity-50 animate-drift1 bg-aurora-violet" />
-      <div className="absolute top-[18%] -right-[220px] w-[700px] h-[700px] rounded-full blur-[90px] opacity-[0.38] animate-drift2 bg-aurora-pink" />
-      <div className="absolute -bottom-[120px] left-[28%] w-[500px] h-[500px] rounded-full blur-[90px] opacity-[0.32] animate-drift3 bg-aurora-mint" />
-      <div className="absolute top-[55%] left-[8%] w-[450px] h-[450px] rounded-full blur-[90px] opacity-30 animate-drift4 bg-aurora-sky" />
+      <div className="absolute -top-[150px] -left-[100px] w-[600px] h-[600px] rounded-full blur-[90px] opacity-60 animate-drift1 bg-aurora-violet" />
+      <div className="absolute top-[12%] -right-[220px] w-[700px] h-[700px] rounded-full blur-[90px] opacity-[0.50] animate-drift2 bg-aurora-pink" />
+      <div className="absolute -bottom-[120px] left-[28%] w-[520px] h-[520px] rounded-full blur-[90px] opacity-[0.42] animate-drift3 bg-aurora-mint" />
+      <div className="absolute top-[55%] left-[8%] w-[450px] h-[450px] rounded-full blur-[90px] opacity-40 animate-drift4 bg-aurora-sky" />
 
       {/* R3F 3D scene */}
       {!reduceMotion && (

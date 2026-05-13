@@ -12,6 +12,7 @@ interface Project {
   description: string;
   highlights: string[];
   accent: "purple" | "pink" | "teal";
+  status: "shipped" | "in-progress";
 }
 
 const PROJECTS: Project[] = [
@@ -29,6 +30,7 @@ const PROJECTS: Project[] = [
       "Retailer + distributor portals",
     ],
     accent: "purple",
+    status: "shipped",
   },
   {
     number: "02",
@@ -44,6 +46,7 @@ const PROJECTS: Project[] = [
       "Advanced filtering",
     ],
     accent: "pink",
+    status: "shipped",
   },
   {
     number: "03",
@@ -59,6 +62,7 @@ const PROJECTS: Project[] = [
       "Friendly creation workflow",
     ],
     accent: "teal",
+    status: "shipped",
   },
   {
     number: "04",
@@ -74,6 +78,7 @@ const PROJECTS: Project[] = [
       "Multimedia resources",
     ],
     accent: "purple",
+    status: "shipped",
   },
   {
     number: "05",
@@ -89,13 +94,14 @@ const PROJECTS: Project[] = [
       "Improved engagement",
     ],
     accent: "pink",
+    status: "shipped",
   },
 ];
 
 const ACCENT_DOT: Record<Project["accent"], string> = {
-  purple: "bg-aurora-purple shadow-[0_0_16px_rgba(167,139,250,0.55)]",
-  pink: "bg-aurora-pink shadow-[0_0_16px_rgba(244,114,182,0.55)]",
-  teal: "bg-aurora-mint shadow-[0_0_16px_rgba(63,216,194,0.55)]",
+  purple: "bg-aurora-purple shadow-[0_0_14px_rgba(167,139,250,0.6)]",
+  pink: "bg-aurora-pink shadow-[0_0_14px_rgba(244,114,182,0.6)]",
+  teal: "bg-aurora-mint shadow-[0_0_14px_rgba(63,216,194,0.6)]",
 };
 
 const ACCENT_TEXT: Record<Project["accent"], string> = {
@@ -106,61 +112,53 @@ const ACCENT_TEXT: Record<Project["accent"], string> = {
 
 export default function ProjectsResume() {
   return (
-    <div className="grid gap-5 sm:gap-6">
+    <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
       {PROJECTS.map((p, idx) => (
         <motion.div
           key={p.title}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: idx * 0.04 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: idx * 0.04 }}
+          className="h-full"
         >
-          <GlassCard tilt tiltIntensity={5} className="p-6 sm:p-8 grid lg:grid-cols-[1fr_280px] gap-6 lg:gap-8">
-            <div className="min-w-0">
-              <div className="flex items-baseline gap-3 sm:gap-4 mb-3 flex-wrap">
-                <span className={`text-xs tracking-[0.15em] ${ACCENT_TEXT[p.accent]} font-medium`}>
-                  {p.number}
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-medium tracking-tight leading-tight text-white">
-                  {p.title}
-                </h3>
-              </div>
-
-              <p className="text-[11px] sm:text-xs uppercase tracking-[0.1em] text-white/45 mb-4">
-                {p.role} · Team of {p.team} · {p.tech.join(" / ")}
-              </p>
-
-              <p className="text-[15px] sm:text-base leading-relaxed text-white/65 max-w-2xl">
-                {p.description}
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {p.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-white/65"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
+          <GlassCard tilt tiltIntensity={5} className="p-7 sm:p-8 h-full flex flex-col">
+            <div className="flex justify-between items-start gap-3 mb-5">
+              <span className="text-[11px] tracking-[0.12em] uppercase text-white/45 font-medium">
+                {p.number} · {p.role}
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-[10px] tracking-[0.12em] uppercase font-medium text-white/55 whitespace-nowrap">
+                <span className={`w-1.5 h-1.5 rounded-full ${ACCENT_DOT[p.accent]}`} />
+                {p.status === "shipped" ? "Shipped" : "In progress"}
+              </span>
             </div>
 
-            <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-5 flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <span className={`w-2 h-2 rounded-full ${ACCENT_DOT[p.accent]}`} />
-                <p className="text-[10px] tracking-[0.15em] uppercase text-white/50 font-medium">
-                  Highlights
-                </p>
-              </div>
-              <ul className="space-y-2.5 text-sm leading-snug text-white/80">
-                {p.highlights.map((h) => (
-                  <li key={h} className="flex gap-2">
-                    <span className={`${ACCENT_TEXT[p.accent]} font-medium`}>→</span>
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
+            <h3 className="text-xl sm:text-2xl font-medium tracking-tight leading-snug text-white mb-3">
+              {p.title}
+            </h3>
+
+            <p className="text-[15px] leading-relaxed text-white/65 mb-5">
+              {p.description}
+            </p>
+
+            <ul className="space-y-2 mb-6 text-sm text-white/75 leading-snug">
+              {p.highlights.map((h) => (
+                <li key={h} className="flex gap-2.5">
+                  <span className={`${ACCENT_TEXT[p.accent]} shrink-0`}>→</span>
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-auto flex flex-wrap gap-2 pt-1">
+              {p.tech.map((t) => (
+                <span
+                  key={t}
+                  className="text-xs px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-white/70"
+                >
+                  {t}
+                </span>
+              ))}
             </div>
           </GlassCard>
         </motion.div>
