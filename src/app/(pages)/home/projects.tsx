@@ -16,21 +16,48 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     number: "01",
-    title: "Tire Planet",
-    role: "Senior Developer",
+    title: "Calculator Application",
+    role: "Team Lead",
+    team: 6,
+    tech: ["ReactJS", "TypeScript", "NestJS", "MongoDB","Azure Pipeline", "Azure DevOps"],
+    description:
+      "A Massive calculation application built using ReactJS, TypeScript, NestJS, and MongoDB.",
+    highlights: [
+      "Led a team of 6 to deliver on time",
+      "Multi-role access with secure auth",
+    ],
+    accent: "rose",
+  },
+  {
+    number: "02",
+    title: "B2B CRM Application",
+    role: "Front end Developer",
     team: 6,
     tech: ["ReactJS", "Azure DevOps"],
     description:
       "A B2C platform letting end-users track orders and browse product/brand information, with role-based portals for retailers and distributors.",
     highlights: [
-      "Led a team of 6 to deliver on time",
-      "Multi-role access with secure auth",
-      "Retailer + distributor portals",
+      "Built responsive UI with ReactJS",
+      "Worked on multiple projects",
+    ],
+    accent: "sun",
+  },
+  {
+    number: "01",
+    title: "B2C CRM Application",
+    role: "Front End Developer",
+    team: 6,
+    tech: ["ReactJS", "Azure DevOps"],
+    description:
+      "A B2C platform letting end-users track orders and browse product/brand information, with role-based portals for retailers and distributors.",
+    highlights: [
+      "Built responsive UI with ReactJS",
+      "Worked on multiple projects",
     ],
     accent: "orange",
   },
   {
-    number: "02",
+    number: "04",
     title: "Instream Dashboard",
     role: "Software Engineer",
     team: 1,
@@ -45,7 +72,7 @@ const PROJECTS: Project[] = [
     accent: "sun",
   },
   {
-    number: "03",
+    number: "05",
     title: "Kolibri Studio",
     role: "Software Engineer",
     team: 1,
@@ -60,7 +87,7 @@ const PROJECTS: Project[] = [
     accent: "rose",
   },
   {
-    number: "04",
+    number: "06",
     title: "Kolibri Desktop Tool",
     role: "Software Engineer",
     team: 1,
@@ -75,7 +102,7 @@ const PROJECTS: Project[] = [
     accent: "orange",
   },
   {
-    number: "05",
+    number: "07",
     title: "Instream Ad Widget",
     role: "Software Engineer",
     team: 1,

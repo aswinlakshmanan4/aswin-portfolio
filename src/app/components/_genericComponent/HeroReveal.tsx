@@ -12,7 +12,7 @@ export default function HeroReveal() {
     <h1
       className="font-bold leading-[0.88] tracking-[-0.04em] uppercase select-none"
       style={{
-        fontSize: "clamp(2.5rem, 11vw, 9rem)",
+        fontSize: "clamp(2.5rem, 11vw, 8rem)",
       }}
     >
       {NAME_LINES.map((line, lineIdx) => (
