@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import GlassCard from "@/app/components/_genericComponent/GlassCard";
 
 interface Project {
   number: string;
@@ -10,7 +11,7 @@ interface Project {
   tech: string[];
   description: string;
   highlights: string[];
-  accent: "orange" | "sun" | "rose";
+  accent: "purple" | "pink" | "teal";
 }
 
 const PROJECTS: Project[] = [
@@ -27,7 +28,7 @@ const PROJECTS: Project[] = [
       "Multi-role access with secure auth",
       "Retailer + distributor portals",
     ],
-    accent: "orange",
+    accent: "purple",
   },
   {
     number: "02",
@@ -42,7 +43,7 @@ const PROJECTS: Project[] = [
       "Optimized revenue queries",
       "Advanced filtering",
     ],
-    accent: "sun",
+    accent: "pink",
   },
   {
     number: "03",
@@ -57,7 +58,7 @@ const PROJECTS: Project[] = [
       "Interactive multimedia support",
       "Friendly creation workflow",
     ],
-    accent: "rose",
+    accent: "teal",
   },
   {
     number: "04",
@@ -72,7 +73,7 @@ const PROJECTS: Project[] = [
       "Screen-reader friendly UI",
       "Multimedia resources",
     ],
-    accent: "orange",
+    accent: "purple",
   },
   {
     number: "05",
@@ -87,75 +88,82 @@ const PROJECTS: Project[] = [
       "Targeted placement per client",
       "Improved engagement",
     ],
-    accent: "sun",
+    accent: "pink",
   },
 ];
 
-const ACCENT_BG: Record<Project["accent"], string> = {
-  orange: "bg-orange",
-  sun: "bg-sun",
-  rose: "bg-rose",
+const ACCENT_DOT: Record<Project["accent"], string> = {
+  purple: "bg-aurora-purple shadow-[0_0_16px_rgba(167,139,250,0.55)]",
+  pink: "bg-aurora-pink shadow-[0_0_16px_rgba(244,114,182,0.55)]",
+  teal: "bg-aurora-mint shadow-[0_0_16px_rgba(63,216,194,0.55)]",
+};
+
+const ACCENT_TEXT: Record<Project["accent"], string> = {
+  purple: "text-aurora-purple",
+  pink: "text-aurora-pink",
+  teal: "text-aurora-mint",
 };
 
 export default function ProjectsResume() {
   return (
-    <div className="grid gap-6 sm:gap-8 lg:gap-10">
+    <div className="grid gap-5 sm:gap-6">
       {PROJECTS.map((p, idx) => (
-        <motion.article
+        <motion.div
           key={p.title}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          whileHover={{ rotate: idx % 2 === 0 ? -0.4 : 0.4 }}
-          className="bg-cream border-3 border-ink p-4 sm:p-6 lg:p-8 grid lg:grid-cols-[1fr_280px] gap-5 lg:gap-6 brut-press"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: idx * 0.04 }}
         >
-          <div className="min-w-0">
-            <div className="flex items-baseline gap-3 sm:gap-4 mb-3 sm:mb-4 flex-wrap">
-              <span className="font-mono text-xs tracking-widest text-ink/60">
-                {p.number}
-              </span>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight leading-none break-words">
-                {p.title}
-              </h3>
-            </div>
-
-            <p className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-ink/70 mb-3 sm:mb-4 break-words">
-              {p.role} · Team of {p.team} · {p.tech.join(", ")}
-            </p>
-
-            <p className="text-sm sm:text-base leading-relaxed text-ink-soft max-w-2xl">
-              {p.description}
-            </p>
-
-            <div className="mt-4 sm:mt-5 flex flex-wrap gap-2">
-              {p.tech.map((t) => (
-                <span
-                  key={t}
-                  className="text-[11px] sm:text-xs font-bold uppercase tracking-wide border-3 border-ink px-2 sm:px-3 py-1 bg-cream-deep"
-                >
-                  {t}
+          <GlassCard tilt tiltIntensity={5} className="p-6 sm:p-8 grid lg:grid-cols-[1fr_280px] gap-6 lg:gap-8">
+            <div className="min-w-0">
+              <div className="flex items-baseline gap-3 sm:gap-4 mb-3 flex-wrap">
+                <span className={`text-xs tracking-[0.15em] ${ACCENT_TEXT[p.accent]} font-medium`}>
+                  {p.number}
                 </span>
-              ))}
-            </div>
-          </div>
+                <h3 className="text-2xl sm:text-3xl font-medium tracking-tight leading-tight text-white">
+                  {p.title}
+                </h3>
+              </div>
 
-          <div
-            className={`${ACCENT_BG[p.accent]} border-3 border-ink p-4 sm:p-5 flex flex-col gap-2`}
-          >
-            <p className="font-mono text-[10px] tracking-widest uppercase text-ink/70 mb-1">
-              Highlights
-            </p>
-            <ul className="space-y-2 text-sm leading-snug text-ink font-medium">
-              {p.highlights.map((h) => (
-                <li key={h} className="flex gap-2">
-                  <span className="font-bold">→</span>
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </motion.article>
+              <p className="text-[11px] sm:text-xs uppercase tracking-[0.1em] text-white/45 mb-4">
+                {p.role} · Team of {p.team} · {p.tech.join(" / ")}
+              </p>
+
+              <p className="text-[15px] sm:text-base leading-relaxed text-white/65 max-w-2xl">
+                {p.description}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {p.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-white/65"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-5 flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full ${ACCENT_DOT[p.accent]}`} />
+                <p className="text-[10px] tracking-[0.15em] uppercase text-white/50 font-medium">
+                  Highlights
+                </p>
+              </div>
+              <ul className="space-y-2.5 text-sm leading-snug text-white/80">
+                {p.highlights.map((h) => (
+                  <li key={h} className="flex gap-2">
+                    <span className={`${ACCENT_TEXT[p.accent]} font-medium`}>→</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </GlassCard>
+        </motion.div>
       ))}
     </div>
   );
